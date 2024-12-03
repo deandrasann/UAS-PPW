@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema:create('transaksi_detail', function (Blueprint $table) {
+        Schema::create('transaksi_detail', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_transaksi');
-            $table->string('nama_produk');
-            $table->integer('harga_satuan');
-            $table->integer('jumlah');
-            $table->integer('subtotal');
-            $table->timestamps(); // created_at & updated_at
-            $table->softDeletes(); // deleted_at
+            $table->date('tanggal_pembelian');
+            $table->integer('total_harga');
+            $table->integer('bayar');
+            $table->integer('kembalian');
+            $table->softDeletes();  // Menambahkan soft delete
+            $table->timestamps();   // Menambahkan timestamps (created_at, updated_at)
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksi_detail');
+        Schema::dropIfExists('transaksi');
     }
 };
