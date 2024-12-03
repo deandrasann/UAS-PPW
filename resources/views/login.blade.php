@@ -1,4 +1,3 @@
-
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
 
@@ -15,19 +14,19 @@
                     <div class="mb-3 row">
                         <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email Address</label>
                         <div class="col-md-6">
-                            <input type="email" class="form-control @error('') is-invalid @enderror" name="" value="{{ old('') }}">
-                            @if ($errors->has(''))
-                                <span class="text-danger">{{ $errors->first('') }}</span>
-                            @endif
+                            <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
+                            @error('email')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="password" class="col-md-4 col-form-label text-md-end text-start">Password</label>
                         <div class="col-md-6">
-                            <input type="password" class="form-control @error('') is-invalid @enderror" name="">
-                            @if ($errors->has(''))
-                                <span class="text-danger">{{ $errors->first('') }}</span>
-                            @endif
+                            <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                            @error('password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="mb-3 row">

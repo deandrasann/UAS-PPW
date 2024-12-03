@@ -21,21 +21,21 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required|string',
         ]);
 
-        if(Auth::attempt($credentials))
-        {
-            $request->session()->regenerate();
-            return redirect()->route('dashboard')->withSuccess('logged in');
+        // Attempt to log the user in
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // If successful, redirect to the dashboard
+            return redirect()->intended('dashboard'); // Replace 'dashboard' with your route name
         }
 
+        // If authentication fails, redirect back with error
         return back()->withErrors([
-            'email' => 'email atau password salah',
-        ])->onlyInput('email');
-
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     public function logout(Request $request)
