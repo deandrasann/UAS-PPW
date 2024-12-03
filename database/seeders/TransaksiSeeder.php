@@ -16,15 +16,15 @@ class TransaksiSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $startDate = Carbon::create(2024, 11, 1); // 1 November 2024
-        $endDate = Carbon::create(2024, 11, 10); // 10 November 2024
+        $startDate = Carbon::create(2024, 11, 1);
+        $endDate = Carbon::create(2024, 11, 10);
 
         for ($date = $startDate; $date->lte($endDate); $date->addDay()) {
             $numberOfTransactions = $faker->numberBetween(15, 20);
 
             for ($i = 0; $i < $numberOfTransactions; $i++) {
-                $totalHarga = $faker->numberBetween(10000, 500000); // Contoh range harga total
-                $bayar = $faker->numberBetween($totalHarga, $totalHarga + 100000); // Pembayaran minimal totalHarga
+                $totalHarga = $faker->numberBetween(10000, 500000);
+                $bayar = $faker->numberBetween($totalHarga, $totalHarga + 100000);
                 $kembalian = $bayar - $totalHarga;
                 Transaksi::create([
                     'tanggal_pembelian' => $date->format('Y-m-d'),
