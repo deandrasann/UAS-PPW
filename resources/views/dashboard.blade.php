@@ -2,7 +2,6 @@
 @extends('layouts')
 @section('content')
 
-@endsection
 
 <div class="d-flex flex-column gap-4">
     <div class="card">
