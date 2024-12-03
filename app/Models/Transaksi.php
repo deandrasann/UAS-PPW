@@ -7,19 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    use HasFactory
+    use HasFactory;
 
     protected $table = 'transaksi';
 
-    $fillable = [
+    protected $fillable = [
         'tanggal_pembelian',
         'total_harga',
         'bayar',
         'kembalian',
+        'soft_deletes',
     ];
 
     public function transaksidetail()
     {
-        return$this-hasMany(TransaksiDetail::class,'id_transaksi','id');
+        return $this->hasMany(TransaksiDetail::class,'id_transaksi','id');
     }
 }
