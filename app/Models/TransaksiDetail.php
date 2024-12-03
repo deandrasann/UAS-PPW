@@ -22,6 +22,6 @@ class TransaksiDetail extends Model
 
     public function transaksi()
     {
-        return $this->belongsTo(Transaksi::class,'id');
+        return $this->belongsTo(Transaksi::class,'id_transaksi');
     }
 }
