@@ -34,7 +34,7 @@ class TransaksiDetailSeeder extends Seeder
 
                 // Buat data transaksi detail
                 TransaksiDetail::create([
-                    'id_transaksi' => $t->id,
+                    'id' => $t->id,
                     'nama_produk' => $faker->productName,
                     'harga_satuan' => $hargaSatuan,
                     'jumlah' => $jumlah,
@@ -42,7 +42,7 @@ class TransaksiDetailSeeder extends Seeder
                 ]);
             }
 
-            // Update total harga di tabel transaksi
+            // Update total harga di tabel t
             $t->update([
                 'total_harga' => $total_harga,
                 'bayar' => ceil($total_harga / 50000) * 50000, // Pembulatan ke atas kelipatan 50.000

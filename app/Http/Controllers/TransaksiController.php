@@ -81,7 +81,7 @@ class TransaksiController extends Controller
             DB::rollback();
 
             // Return with error message
-            return redirect()->back()->withErrors(['Transaction' => 'Gagal menambahkan data'])->withInput();
+            return redirect()->back()->withErrors(['Transaction' => $e->getMessage()])->withInput();
         }
     }
 
