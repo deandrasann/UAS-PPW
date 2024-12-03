@@ -6,7 +6,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $transaksi_count =
+        $transaksi_count = 
         return view('dashboard', );
     }
 }
